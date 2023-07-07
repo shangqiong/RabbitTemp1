@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.security_1.mapper.RightMapper">
+    <select id="getRightsById" resultType="java.lang.String">
+        select lname
+        from
+            sys_user join ur
+                     join sys_role
+                     join lr
+                     join sys_right
+                          on sys_user.id = ur.uid and ur.rid = sys_role.rid
+                              and sys_role.rid = lr.rid and lr.lid = sys_right.lid and sys_user.id = #{id};
+    </select>
+</mapper>
